@@ -3,13 +3,20 @@
 FastAPI + MongoDB. All application code is in `app/main.py`.
 
 ## Run
+
+### 1. Start MongoDB (Docker Engine)
+MongoDB 6.0+ is required (the analytics use `$densify`, `$setWindowFields` and `$lookup` with a sub-pipeline). You can start a local instance using Docker:
+```bash
+docker run -d --name mongo -p 27017:27017 mongo:7.0
+```
+
+### 2. Start the API
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 export MONGO_URI=mongodb://localhost:27017 MONGO_DB=attendance_db   # or rely on defaults (mongodb://localhost:27017 / attendance_db)
 uvicorn app.main:app --port 8000
 ```
-MongoDB 6.0+ is required (the analytics use `$densify`, `$setWindowFields` and `$lookup` with a sub-pipeline).
 Indexes are created automatically at startup; there are no manual steps.
 
 ## Status
