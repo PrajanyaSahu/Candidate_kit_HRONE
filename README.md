@@ -14,7 +14,7 @@ docker run -d --name mongo -p 27017:27017 mongo:7.0
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-export MONGO_URI=mongodb://localhost:27017 MONGO_DB=attendance_db   # or rely on defaults (mongodb://localhost:27017 / attendance_db)
+cp .env.example .env              # or export MONGO_URI / MONGO_DB (real env vars win over .env)
 uvicorn app.main:app --port 8000
 ```
 Indexes are created automatically at startup; there are no manual steps.
