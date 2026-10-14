@@ -6,7 +6,7 @@ FastAPI + MongoDB. All application code is in `app/main.py`.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env              # or export MONGO_URI / MONGO_DB (real env vars win over .env)
+export MONGO_URI=mongodb://localhost:27017 MONGO_DB=attendance_db   # or rely on defaults (mongodb://localhost:27017 / attendance_db)
 uvicorn app.main:app --port 8000
 ```
 MongoDB 6.0+ is required (the analytics use `$densify`, `$setWindowFields` and `$lookup` with a sub-pipeline).
